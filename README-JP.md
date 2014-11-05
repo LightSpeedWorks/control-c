@@ -10,6 +10,8 @@
 2回のControl-Cで、リセットや再初期化を行ったり、<br/>
 3回のControl-Cで、クリーンアップと正常終了を行う、など。
 
+![control-c.png](images/control-c.png)
+
 # インストール:
 
 ```bash

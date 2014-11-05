@@ -10,6 +10,8 @@ clean up and exit on triple control-c, and so on.
 
 [Japanese version/■日本語版はこちら■](README-JP.md#readme)
 
+![control-c.png](images/control-c.png)
+
 # INSTALL:
 
 ```bash
