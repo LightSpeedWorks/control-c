@@ -9,5 +9,5 @@
     var ControlC = require('control-c');
   }
 
-  console.log('key in control-c in 10 seconds.');
+  console.log('press control-c in 10 seconds.');
   setTimeout(function () {}, 10 * 1000);

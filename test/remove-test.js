@@ -22,5 +22,5 @@
                   this.remove(); }
   );
 
-  console.log('key in control-c in 20 seconds.');
+  console.log('press control-c in 20 seconds.');
   setTimeout(function () {}, 20 * 1000);
