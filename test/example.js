@@ -11,7 +11,7 @@ catch (e) {
 var singleCount = 0;
 var doubleCount = 0;
 
-var c1 = ControlC(
+ControlC(
   function singleControlC() { console.log('Single:', ++singleCount); },
   function doubleControlC() { console.log('Double:', ++doubleCount); },
   function tripleControlC() { console.log('Reset'); singleCount = doubleCount = 0; },
