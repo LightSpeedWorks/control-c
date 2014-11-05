@@ -1,32 +1,32 @@
 [control-c](https://www.npmjs.org/package/control-c) - npm
 ====
 
-[ControlC](https://www.npmjs.org/package/control-c) is simple utility, handles SIGINT or Control-C.<br/>
-Also suppot single control-c, double control-c, triple control-c and so on.
+[English version](README.md#readme)
 
-For example, print current status on single control-c,<br/>
-reset or re-initialize on double control-c,<br/>
-clean up and exit on triple control-c, and so on.
+[ControlC](https://www.npmjs.org/package/control-c)は簡単なユーティティでSIGINTというかControl-Cをハンドリングする事が出来る。<br/>
+もちろん1回のControl-Cや2回とか3回以上のControl-Cもサポートする。
 
-[Japanese version/■日本語版はこちら■](README-JP.md#readme)
+例えば、1回のControl-Cで、プログラムの状態をプリントしたり、<br/>
+2回のControl-Cで、リセットや再初期化を行ったり、<br/>
+3回のControl-Cで、クリーンアップと正常終了を行う、など。
 
-# INSTALL:
+# インストール:
 
 ```bash
 $ npm install control-c
 ```
 
-# USAGE:
+# 使い方:
 
 ```js
 var ControlC = require('control-c');
 ```
 
-## method: ControlC.new(handlers...)
+## メソッド: ControlC.new(handlers...)
 
-  Add new handlers to handle SIGINT.
+  SIGINTをハンドリングする新しいハンドラーを新規に作成して追加する。
 
-### Format
+### 形式
 
 ```js
 var c1 = new ControlC(
@@ -47,19 +47,19 @@ var c3 = ControlC.new(
   function tripleControlC() { console.log('triple ctrl-c'); this.remove(); });
 ```
 
-### Parameters
+### パラメータ
 
-  + **handlers**...: SIGINT handler functions, required
+  + **handlers**...: SIGINTハンドラー関数。必須
 
-### Returns
+### 返り値
 
-  ControlC instance.
+  ControlCクラスのインスタンス
 
-## method: this.remove() and this.add()
+## メソッド: this.remove() と this.add()
 
-  Remove and add to hande SIGINT.
+  SIGINTハンドラーの削除や追加を行う。
 
-### Format
+### 形式
 
 ```js
 var c1 = new ControlC(function () {},
@@ -68,22 +68,22 @@ c1.remove();
 c1.add();
 ```
 
-## property: ControlC.interval
+## プロパティ: ControlC.interval
 
-  Control-C timeout interval. milliseconds.
+  Control-Cタイムアウト間隔。ミリ秒。
 
-### Format
+### 形式
 
 ```js
 ControlC.interval = 500;
 console.log(ControlC.interval);
 ```
 
-### Parameters
+### パラメータ
 
-  + **interval**: Control-C timeout interval, between 200 and 2000 msec, default 500 msec
+  + **interval**: Control-Cタイムアウト間隔。200～2000ミリ秒。デフォルトは500ミリ秒。
 
-# EXAMPLE:
+# 例:
 
 ```js
 'use strict';
@@ -103,6 +103,6 @@ console.log('press control-c in 30 seconds.');
 setTimeout(function () {}, 30000);
 ```
 
-# LICENSE:
+# ライセンス:
 
   MIT
