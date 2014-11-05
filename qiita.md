@@ -1,7 +1,7 @@
 Control-C をハンドリングするのに便利なツール
 ====
 
-npm に [control-c](https://www.npmjs.org/package/control-c) というパッケージをを登録した。
+npm に [control-c](https://www.npmjs.org/package/control-c) というパッケージを登録した。
 
 例えば、以下の様な事ができる。
 
