@@ -1,0 +1,27 @@
+{
+  "name": "control-c",
+  "version": "0.0.0",
+  "description": "Control-C (SIGINT) handler",
+  "main": "lib/control-c.js",
+  "dependencies": {
+    "base-class-extend": ">=0.0.6"
+  },
+  "keywords": [
+    "control-c",
+    "int",
+    "sigint"
+  ],
+  "homepage": "https://github.com/LightSpeedWorks/control-c",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LightSpeedWorks/control-c"
+  },
+  "bugs": {
+    "url": "https://github.com/LightSpeedWorks/control-c/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LightSpeedC",
+  "license": "MIT"
+}
