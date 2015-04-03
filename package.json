@@ -1,10 +1,10 @@
 {
   "name": "control-c",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Control-C (SIGINT) handler supports single, double, triple, quadruple control-c and so on",
   "main": "lib/control-c.js",
   "dependencies": {
-    "base-class-extend": ">=0.0.6"
+    "base-class-extend": ">=0.0.14"
   },
   "keywords": [
     "control-c",
