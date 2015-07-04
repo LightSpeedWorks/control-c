@@ -2,7 +2,7 @@
 
 'use strict';
 
-try { var ControlC = require('../lib/control-c'); }
+try { var ControlC = require('../control-c'); }
 catch (e) {
   console.log(e.stack);
   var ControlC = require('control-c');
