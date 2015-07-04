@@ -1,8 +1,5 @@
 .git*
 .npm*
-examples/
-lib/
 test/
 images/
 qiita*
-README-JP.md
