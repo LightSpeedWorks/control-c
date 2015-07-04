@@ -61,11 +61,11 @@ this.ControlC = function () {
 
   var timer = null;
   var count = -1;
-  var startTime = Date.now();
+  //var startTime = Date.now();
 
   function sigint() {
-    console.log(Date.now() - startTime);
-    startTime = Date.now();
+    //console.log(Date.now() - startTime);
+    //startTime = Date.now();
     if (timer) clearTimeout(timer);
     timer = setTimeout(timeout, interval);
 
