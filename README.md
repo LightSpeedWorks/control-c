@@ -1,12 +1,13 @@
-[control-c](https://www.npmjs.org/package/control-c) - npm
+[control-c](https://www.npmjs.com/package/control-c) - npm
 ====
 
-[ControlC](https://www.npmjs.org/package/control-c) is simple utility, handles SIGINT or Control-C.<br/>
+[ControlC](https://www.npmjs.com/package/control-c) is simple utility, handles SIGINT or Control-C.<br/>
 Also suppot single control-c, double control-c, triple control-c and so on.
 
 For example, print current status on single control-c,<br/>
 reset or re-initialize on double control-c,<br/>
-clean up and exit on triple control-c, and so on.
+clean up and exit on triple control-c,<br/>
+ignore quadruple or more control-c, and so on.
 
 [Japanese version/■日本語版はこちら■](README-JP.md#readme)
 
@@ -26,7 +27,7 @@ var ControlC = require('control-c');
 
 ## method: ControlC.new(handlers...)
 
-  Add new handlers to handle SIGINT.
+  Add new handlers to handle SIGINT (Control-C).
 
 ### Format
 
@@ -34,19 +35,22 @@ var ControlC = require('control-c');
 var c1 = new ControlC(
   function singleControlC() { console.log('single ctrl-c'); },
   function doubleControlC() { console.log('double ctrl-c'); },
-  function tripleControlC() { console.log('triple ctrl-c'); this.remove(); });
+  function tripleControlC() { console.log('triple ctrl-c'); this.remove(); },
+  function ignoreControlC() {});
 
 // or
 var c2 = ControlC(
   function singleControlC() { console.log('single ctrl-c'); },
   function doubleControlC() { console.log('double ctrl-c'); },
-  function tripleControlC() { console.log('triple ctrl-c'); this.remove(); });
+  function tripleControlC() { console.log('triple ctrl-c'); this.remove(); },
+  function ignoreControlC() {});
 
 // or
 var c3 = ControlC.new(
   function singleControlC() { console.log('single ctrl-c'); },
   function doubleControlC() { console.log('double ctrl-c'); },
-  function tripleControlC() { console.log('triple ctrl-c'); this.remove(); });
+  function tripleControlC() { console.log('triple ctrl-c'); this.remove(); },
+  function ignoreControlC() {});
 ```
 
 ### Parameters
@@ -77,13 +81,13 @@ c1.add();
 ### Format
 
 ```js
-ControlC.interval = 500;
+ControlC.interval = 400;
 console.log(ControlC.interval);
 ```
 
 ### Parameters
 
-  + **interval**: Control-C timeout interval, between 200 and 2000 msec, default 500 msec
+  + **interval**: Control-C timeout interval, between 200 and 2000 msec, default 400 msec
 
 # EXAMPLE:
 
@@ -99,7 +103,8 @@ ControlC(
   function singleControlC() { console.log('Single:', ++singleCount); },
   function doubleControlC() { console.log('Double:', ++doubleCount); },
   function tripleControlC() { console.log('Reset'); singleCount = doubleCount = 0; },
-  function quadrupleControlC() { console.log('Exit'); process.nextTick(process.exit); });
+  function quadrupleControlC() { console.log('Exit'); process.nextTick(process.exit); },
+  function ignoreControlC() {});
 
 console.log('press control-c in 30 seconds.');
 setTimeout(function () {}, 30000);
