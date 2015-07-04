@@ -1,6 +1,6 @@
 {
   "name": "control-c",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Control-C (SIGINT) handler supports single, double, triple, quadruple control-c and so on",
   "main": "control-c.js",
   "dependencies": {
@@ -20,7 +20,7 @@
   "homepage": "https://github.com/LightSpeedWorks/control-c",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LightSpeedWorks/control-c"
+    "url": "LightSpeedWorks/control-c"
   },
   "bugs": {
     "url": "https://github.com/LightSpeedWorks/control-c/issues"
