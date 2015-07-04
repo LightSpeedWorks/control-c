@@ -5,18 +5,17 @@ this.ControlC = function () {
 
   var extend = require('base-class-extend').extend;
 
-  var slice = Array.prototype.slice;
-
   // class variables
   var instances = [];
-  var interval = 500;
+  var DEFAULT_INTERVAL = 400;
+  var interval = DEFAULT_INTERVAL;
 
   var ControlC = extend('ControlC', {
     constructor: function ControlC() {
       if (!(this instanceof ControlC))
-        return ControlC.new.apply(ControlC, arguments);
+        return ControlC.create.apply(ControlC, arguments);
 
-      var handlers = slice.call(arguments);
+      var handlers = arguments;
 
       if (handlers.length === 0)
         throw new RangeError('no handlers specified');
@@ -55,29 +54,36 @@ this.ControlC = function () {
 
       // interval range: between 0.2 and 2 sec
       if (val < 200 || val > 2000)
-        val = 500;
+        val = DEFAULT_INTERVAL;
 
       interval = val; },
   });
 
   var timer = null;
   var count = -1;
+  var startTime = Date.now();
 
   function sigint() {
+    console.log(Date.now() - startTime);
+    startTime = Date.now();
     if (timer) clearTimeout(timer);
     timer = setTimeout(timeout, interval);
 
     ++count;
+  }
 
-    function timeout() {
-      var objects = slice.call(instances);
+  function timeout() {
+    fire(count);
 
-      for (var i = 0, n = objects.length; i < n; ++i)
-        objects[i].fire(count);
+    timer = null;
+    count = -1;
+  }
 
-      timer = null;
-      count = -1;
-    }
+  function fire(count) {
+    var objects = instances.slice();
+
+    for (var i = 0, n = objects.length; i < n; ++i)
+      objects[i].fire(count);
   }
 
   function start() {
