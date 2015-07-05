@@ -14,11 +14,16 @@ Control-Cをハンドリングする事ができます。<br/>
 
 ![control-c.png](images/control-c.png)
 
+
 # インストール:
+
+[![NPM](https://nodei.co/npm/control-c.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/control-c/)
+[![NPM](https://nodei.co/npm-dl/control-c.png?height=2)](https://nodei.co/npm/control-c/)
 
 ```bash
 $ npm install control-c
 ```
+
 
 # 使い方:
 

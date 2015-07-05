@@ -13,11 +13,16 @@ ignore quadruple or more control-c, and so on.
 
 ![control-c.png](images/control-c.png)
 
+
 # INSTALL:
+
+[![NPM](https://nodei.co/npm/control-c.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/control-c/)
+[![NPM](https://nodei.co/npm-dl/control-c.png?height=2)](https://nodei.co/npm/control-c/)
 
 ```bash
 $ npm install control-c
 ```
+
 
 # USAGE:
 
