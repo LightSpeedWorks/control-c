@@ -31,7 +31,7 @@ $ npm install control-c
 var ControlC = require('control-c');
 ```
 
-## メソッド: ControlC.new(handlers...)
+## メソッド: new ControlC(handlers...)
 
   SIGINT (Control-C) をハンドリングする新しいハンドラーを新規に作成して追加する。
 
@@ -52,7 +52,7 @@ var c2 = ControlC(
   function ignoreControlC() {});
 
 // or
-var c3 = ControlC.new(
+var c3 = ControlC.create(
   function singleControlC() { console.log('single ctrl-c'); },
   function doubleControlC() { console.log('double ctrl-c'); },
   function tripleControlC() { console.log('triple ctrl-c'); this.remove(); },
@@ -80,6 +80,10 @@ c1.remove();
 c1.add();
 ```
 
+## メソッド: ControlC.getInterval()
+
+## メソッド: ControlC.setInterval(interval)
+
 ## プロパティ: ControlC.interval
 
   Control-Cタイムアウト間隔。ミリ秒。
@@ -105,7 +109,7 @@ var ControlC = require('control-c');
 var singleCount = 0;
 var doubleCount = 0;
 
-ControlC(
+new ControlC(
   function singleControlC() { console.log('Single:', ++singleCount); },
   function doubleControlC() { console.log('Double:', ++doubleCount); },
   function tripleControlC() { console.log('Reset'); singleCount = doubleCount = 0; },

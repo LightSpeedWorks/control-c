@@ -30,7 +30,7 @@ $ npm install control-c
 var ControlC = require('control-c');
 ```
 
-## method: ControlC.new(handlers...)
+## method: new ControlC(handlers...)
 
   Add new handlers to handle SIGINT (Control-C).
 
@@ -51,7 +51,7 @@ var c2 = ControlC(
   function ignoreControlC() {});
 
 // or
-var c3 = ControlC.new(
+var c3 = ControlC.create(
   function singleControlC() { console.log('single ctrl-c'); },
   function doubleControlC() { console.log('double ctrl-c'); },
   function tripleControlC() { console.log('triple ctrl-c'); this.remove(); },
@@ -79,6 +79,10 @@ c1.remove();
 c1.add();
 ```
 
+## method: ControlC.getInterval()
+
+## method: ControlC.setInterval(interval)
+
 ## property: ControlC.interval
 
   Control-C timeout interval. milliseconds.
@@ -104,7 +108,7 @@ var ControlC = require('control-c');
 var singleCount = 0;
 var doubleCount = 0;
 
-ControlC(
+new ControlC(
   function singleControlC() { console.log('Single:', ++singleCount); },
   function doubleControlC() { console.log('Double:', ++doubleCount); },
   function tripleControlC() { console.log('Reset'); singleCount = doubleCount = 0; },
