@@ -4,7 +4,7 @@
   "description": "Control-C (SIGINT) handler supports single, double, triple, quadruple control-c and so on",
   "main": "control-c.js",
   "dependencies": {
-    "base-class-extend": ">=0.0.21"
+    "extend-light": ">=0.0.0"
   },
   "keywords": [
     "control-c",

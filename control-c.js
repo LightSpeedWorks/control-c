@@ -3,14 +3,13 @@
 this.ControlC = function () {
   'use strict';
 
-  var extend = require('base-class-extend').extend;
+  var extend = require('extend-light');
 
   // class variables
   var instances = [];
   var DEFAULT_INTERVAL = 400;
-  var interval = DEFAULT_INTERVAL;
 
-  var ControlC = extend('ControlC', {
+  var ControlC = extend({
     constructor: function ControlC() {
       if (!(this instanceof ControlC))
         return ControlC.create.apply(ControlC, arguments);
@@ -24,16 +23,15 @@ this.ControlC = function () {
         if (typeof handlers[i] !== 'function')
           throw new RangeError('handlers must be a function');
 
-      this.addPrototype({
-        fire: function fire(index) {
+      this.fire = function fire(index) {
           if (index >= handlers.length)
             index = handlers.length - 1;
-
           handlers[index].call(this);
-        },
-      });
+      };
 
       this.add();
+
+      return this; // for apply
     },
     add: function add() {
       if (instances.indexOf(this) >= 0) return;
@@ -45,10 +43,11 @@ this.ControlC = function () {
       if (index < 0) return;
       instances.splice(index, 1);
       if (instances.length === 0) stop();
-    },
+    }
   }, {
-    get interval() { return interval; },
-    set interval(val) {
+    interval: DEFAULT_INTERVAL,
+    getInterval: function getInterval() { return this.interval; },
+    setInterval: function setInterval(val) {
       if (typeof val !== 'number' || !isFinite(val))
         throw new RangeError('interval must be a number: ' + val);
 
@@ -56,7 +55,7 @@ this.ControlC = function () {
       if (val < 200 || val > 2000)
         val = DEFAULT_INTERVAL;
 
-      interval = val; },
+      this.interval = val; }
   });
 
   var timer = null;
@@ -67,7 +66,7 @@ this.ControlC = function () {
     //console.log(Date.now() - startTime);
     //startTime = Date.now();
     if (timer) clearTimeout(timer);
-    timer = setTimeout(timeout, interval);
+    timer = setTimeout(timeout, ControlC.interval);
 
     ++count;
   }
@@ -93,8 +92,6 @@ this.ControlC = function () {
   function stop() {
     process.removeListener('SIGINT', sigint);
   }
-
-  ControlC.ControlC = ControlC;
 
   if (typeof module === 'object' && module && module.exports)
     module.exports = ControlC;
