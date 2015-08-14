@@ -27,7 +27,7 @@
                   process.nextTick(process.exit); }
   );
 
-  var c3 = ControlC.new(
+  var c3 = ControlC.create(
     function () { console.log('c3: 1 time -> add c1 and c2');
                   c1.add(); c2.add(); },
     function () { console.log('c3: 2 times'); },
@@ -36,18 +36,20 @@
                   process.nextTick(process.exit); }
   );
 
-  console.log('ControlC.interval =', ControlC.interval);
-  ControlC.interval = 600;
-  console.log('ControlC.interval =', ControlC.interval);
-  ControlC.interval = 0;
-  console.log('ControlC.interval =', ControlC.interval);
-  try { ControlC.interval = 'string';}
+  console.log('ControlC.interval =', ControlC.interval, ControlC.getInterval());
+  ControlC.setInterval(600);
+  console.log('ControlC.interval =', ControlC.interval, ControlC.getInterval());
+  ControlC.setInterval(0);
+  console.log('ControlC.interval =', ControlC.interval, ControlC.getInterval());
+  try { ControlC.setInterval('string');}
   catch(e) { console.log(e + ''); }
-  try { ControlC.interval = NaN;}
+  try { ControlC.setInterval(NaN);}
   catch(e) { console.log(e + ''); }
-  try { ControlC.interval = Infinity; }
+  try { ControlC.setInterval(Infinity); }
   catch(e) { console.log(e + ''); }
-  console.log('ControlC.interval =', ControlC.interval);
+  console.log('ControlC.interval =', ControlC.interval, ControlC.getInterval());
+  ControlC.setInterval(400);
+  console.log('ControlC.interval =', ControlC.interval, ControlC.getInterval());
 
   console.log('press control-c in 30 seconds.');
   setTimeout(function () {}, 30 * 1000);
