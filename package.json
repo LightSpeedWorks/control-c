@@ -26,7 +26,7 @@
     "url": "https://github.com/LightSpeedWorks/control-c/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"no test specified\""
   },
   "author": "LightSpeedC",
   "license": "MIT"
